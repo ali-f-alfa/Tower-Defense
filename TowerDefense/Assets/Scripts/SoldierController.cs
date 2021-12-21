@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class SoldierController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public SoldierStates state;
+    public float moveFactor;
+    
     void Start()
     {
-        
+        state = SoldierStates.MOVE;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (state == SoldierStates.MOVE)
+        {
+            this.gameObject.transform.position += new Vector3(moveFactor, 0, 0);
+        }
     }
 }
