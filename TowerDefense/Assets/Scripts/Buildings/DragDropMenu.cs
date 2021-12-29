@@ -10,7 +10,6 @@ public class DragDropMenu : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        Debug.Log("ACCESS");
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -30,6 +29,8 @@ public class DragDropMenu : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // Here we have to initiate a prefab
+        // Then we have to set the little image back to its place 
         Debug.Log("END");
     }
 
