@@ -25,7 +25,7 @@ public class DragDropMenu : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("ON");
-        rectTransform.anchoredPosition += eventData.delta;
+        rectTransform.anchoredPosition += eventData.delta  / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
