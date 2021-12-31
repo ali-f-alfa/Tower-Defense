@@ -8,6 +8,9 @@ TagManager:
   - Enemy1
   - Enemy2
   - Enemy3
+  - Arrows
+  - TowerMap
+  - ItemSlot
   layers:
   - Default
   - TransparentFX
