@@ -22,7 +22,7 @@ public class SoldierGenerator : MonoBehaviour
     private Vector3 StartingPoint;
     void Start()
     {
-        StartingPoint = new Vector3(-11, 0, 0);
+        StartingPoint = new Vector3(-2, 0.25f, -5);
         allAliveEnemies = new List<GameObject>();
         //SkinnedMeshRenderer SMR = gameObject.GetComponent<SkinnedMeshRenderer>();
         CreateSoldier(SoldierType.Type0, StartingPoint);
@@ -82,7 +82,7 @@ public class SoldierGenerator : MonoBehaviour
 
 
 
-    public GameObject CreateSoldier(SoldierType soldierType, Vector2 position)
+    public GameObject CreateSoldier(SoldierType soldierType, Vector3 position)
     {
         GameObject enemy;
 
@@ -121,7 +121,7 @@ public class SoldierGenerator : MonoBehaviour
         //    field.SetValue(SMR, field.GetValue(original));
         //}
 
-        ////EnemyScript enemyScript = enemy.AddComponent<EnemyScript>();
+        //EnemyScript enemyScript = enemy.AddComponent<EnemyScript>();
         ////enemyScript.missileMovingSpeed = this.missileMovingSpeed;
         ////enemyScript.MissileSprite = this.MissileSprite;
         ////enemyScript.eventSystem = this.eventSystem;
