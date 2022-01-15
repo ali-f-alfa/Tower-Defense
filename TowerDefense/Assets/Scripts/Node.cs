@@ -26,7 +26,7 @@ public class Node : MonoBehaviour
         }
 
         GameObject towerToBuild = BuildManager.Instance.GetTowerToBuild();
-        Tower = (GameObject) Instantiate(towerToBuild, transform.position, transform.rotation);
+        Tower = (GameObject) Instantiate(towerToBuild, transform.position + new Vector3(0f, 0.25f, 0f), transform.rotation);
     }
 
     void OnMouseEnter()
