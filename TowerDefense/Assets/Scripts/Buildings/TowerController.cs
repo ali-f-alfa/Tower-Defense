@@ -25,7 +25,7 @@ public class TowerController : MonoBehaviour
         if (target == null)
             return;
 
-        
+
 
         if (fireCountdown <= 0f)
         {
@@ -44,7 +44,7 @@ public class TowerController : MonoBehaviour
         Vector3 rotation = lookRotation.eulerAngles;
         ShootPoint.rotation = Quaternion.Euler(rotation.x + 90, rotation.y, rotation.z);
 
-        GameObject ShellGO = (GameObject) Instantiate(ShellPrefab, ShootPoint.position, ShootPoint.rotation);
+        GameObject ShellGO = (GameObject)Instantiate(ShellPrefab, ShootPoint.position, ShootPoint.rotation);
         Shell shell = ShellGO.GetComponent<Shell>();
 
         if (shell != null)
@@ -58,16 +58,19 @@ public class TowerController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(groundEnemiesTag);
         float ShortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
-        foreach(GameObject enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
-            float dist = Vector3.Distance(transform.position, enemy.transform.position);
-            if(dist < ShortestDistance)
+            if (enemy.GetComponent<SoldierController>().state != SoldierStates.DIE)
             {
-                ShortestDistance = dist;
-                nearestEnemy = enemy;
+                float dist = Vector3.Distance(transform.position, enemy.transform.position);
+                if (dist < ShortestDistance)
+                {
+                    ShortestDistance = dist;
+                    nearestEnemy = enemy;
+                }
             }
         }
-        if(nearestEnemy != null && ShortestDistance <= range)
+        if (nearestEnemy != null && ShortestDistance <= range)
         {
             target = nearestEnemy.transform;
         }

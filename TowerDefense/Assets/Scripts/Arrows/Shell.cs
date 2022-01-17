@@ -6,13 +6,13 @@ public class Shell : MonoBehaviour
 {
     private Transform target;
     public float speed = 50f;
+    public float damage = 50;
 
     public void SetTarget(Transform _target)
     {
         target = _target;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (target == null)
@@ -35,6 +35,13 @@ public class Shell : MonoBehaviour
 
     void HitTarget()
     {
-        Debug.Log("HIt");
+        SoldierController e = target.GetComponent<SoldierController>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
+        Destroy(gameObject);
+
     }
 }
