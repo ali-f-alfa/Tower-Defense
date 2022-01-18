@@ -6,6 +6,10 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager Instance;
     public GameObject Tower0Prefab;
+    public GameObject Tower1Prefab;
+    public GameObject Tower2Prefab;
+    public GameObject Tower3Prefab;
+    public GameObject Tower4Prefab;
 
     private GameObject TowerToBuild;
 
@@ -19,18 +23,13 @@ public class BuildManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-        TowerToBuild = Tower0Prefab;
-    }
-
-    void Update()
-    {
-        
-    }
-
     public GameObject GetTowerToBuild()
     {
         return TowerToBuild;
+    }
+
+    public void SetTowerToBuild(GameObject tower)
+    {
+        TowerToBuild = tower;
     }
 }
