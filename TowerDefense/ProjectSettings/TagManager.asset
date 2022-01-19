@@ -12,6 +12,7 @@ TagManager:
   - TowerMap
   - ItemSlot
   - GroundEnemies
+  - Castle
   layers:
   - Default
   - TransparentFX

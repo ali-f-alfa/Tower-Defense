@@ -17,9 +17,13 @@ public class SoldierController : MonoBehaviour
     private float Health;
 
     private Animator anim;
+    public GameObject Castle;
+
+    public float damage;
 
     void Start()
     {
+        Castle = GameObject.FindWithTag("Castle");
         anim = GetComponent<Animator>();
         Health = StartHealth;
         HealthBarDefaultRotation = HealthBar.rotation;
@@ -45,7 +49,7 @@ public class SoldierController : MonoBehaviour
     {
         if(wavepointIndex >= Waypoints.points.Length - 1)
         {
-            Destroy(gameObject);
+            DestroyCastle();
             return;
         }
 
@@ -79,5 +83,31 @@ public class SoldierController : MonoBehaviour
         state = SoldierStates.DIE;
         anim.SetInteger("EnemyMode", 2);
         Destroy(gameObject, 4f);
+    }
+    
+    void DestroyCastle()
+    {
+        state = SoldierStates.ATTACK;
+        anim.SetInteger("EnemyMode", 1);
+        StartCoroutine(HitCastle());
+    }
+
+    private IEnumerator HitCastle()
+    {
+        CastleController c = Castle.GetComponent<CastleController>();
+        var hitDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+
+        while ((c != null) && (state != SoldierStates.DIE))
+        {
+            yield return new WaitForSeconds(hitDuration/2);
+            if(state != SoldierStates.DIE)
+                c.TakeDamage(damage);
+            yield return new WaitForSeconds(hitDuration/2);
+
+        }
+
+        if (c == null)
+            GameManager.IsGameOver = true;
+
     }
 }
