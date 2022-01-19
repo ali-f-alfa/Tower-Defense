@@ -1527,6 +1527,8 @@ MonoBehaviour:
   HealthBar: {fileID: 2670875184913435306}
   GreenHealhBar: {fileID: 2910813370908589178}
   StartHealth: 100
+  Castle: {fileID: 0}
+  damage: 50
 --- !u!1 &5462656467576605778
 GameObject:
   m_ObjectHideFlags: 0
