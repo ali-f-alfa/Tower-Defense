@@ -108,6 +108,5 @@ public class SoldierController : MonoBehaviour
 
         if (c == null)
             GameManager.IsGameOver = true;
-
     }
 }

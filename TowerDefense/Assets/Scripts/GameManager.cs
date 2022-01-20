@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static bool IsGameOver;
     public GameObject gameOverUI;
+    public GameObject pausedMenuUI;
 
     void Start()
     {
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
             EndGame();
             return;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     public void EndGame()
@@ -30,4 +35,17 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void TogglePause()
+    {
+        pausedMenuUI.SetActive(!pausedMenuUI.activeSelf);
+
+        if (pausedMenuUI.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
 }
