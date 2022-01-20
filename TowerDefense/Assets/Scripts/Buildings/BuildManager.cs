@@ -11,7 +11,7 @@ public class BuildManager : MonoBehaviour
     public GameObject Tower3Prefab;
     public GameObject Tower4Prefab;
 
-    private GameObject TowerToBuild;
+    private TowerBluePrint TowerToBuild;
 
     void Awake()
     {
@@ -23,13 +23,29 @@ public class BuildManager : MonoBehaviour
         Instance = this;
     }
 
-    public GameObject GetTowerToBuild()
+    public bool CanBuild {
+        get {
+            return TowerToBuild != null; 
+        } 
+    }
+    public void SelectTowerToBuild(TowerBluePrint towerBlueprint)
     {
-        return TowerToBuild;
+        if (PlayerStats.Coins < towerBlueprint.cost)
+        {
+            Debug.LogError("Not enough Coins!");
+            return;
+        }
+
+        TowerToBuild = towerBlueprint;
     }
 
-    public void SetTowerToBuild(GameObject tower)
+    public void BuildOnNode(Node node)
     {
-        TowerToBuild = tower;
+        PlayerStats.Coins -= TowerToBuild.cost;
+        Debug.Log("Tower build! coins left: " +  PlayerStats.Coins);
+
+        GameObject Tower = (GameObject)Instantiate(TowerToBuild.prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
+        node.Tower = Tower;
+        TowerToBuild = null;
     }
 }
