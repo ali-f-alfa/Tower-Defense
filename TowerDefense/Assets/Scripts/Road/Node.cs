@@ -7,7 +7,7 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     //public BuildManager buildManager;
 
-    private GameObject Tower;
+    public GameObject Tower;
     private Renderer rend;
     private Color startColor;
 
@@ -22,7 +22,7 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
 
         if (Tower != null)
@@ -31,15 +31,12 @@ public class Node : MonoBehaviour
             return;
         }
 
-        GameObject towerToBuild = buildManager.GetTowerToBuild();
-        Tower = (GameObject) Instantiate(towerToBuild, transform.position + new Vector3(0f, 0.25f, 0f), transform.rotation);
-
-        buildManager.SetTowerToBuild(null);
+        buildManager.BuildOnNode(this);
     }
 
     void OnMouseEnter()
     {
-        if (buildManager.GetTowerToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
 
         rend.material.color = hoverColor;

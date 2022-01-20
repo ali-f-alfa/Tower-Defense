@@ -5,40 +5,45 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     BuildManager buildManager;
+    public TowerBluePrint tower0Blueprint;
+    public TowerBluePrint tower1Blueprint;
+    public TowerBluePrint tower2Blueprint;
+    public TowerBluePrint tower3Blueprint;
+    public TowerBluePrint tower4Blueprint;
 
     void Start()
     {
         buildManager = BuildManager.Instance;
     }
 
-    public void PurchaseTower0()
+    public void SelectTower0()
     {
-        Debug.Log("tower0 purchased");
-        buildManager.SetTowerToBuild(buildManager.Tower0Prefab);
+        Debug.Log("tower0 selected");
+        buildManager.SelectTowerToBuild(tower0Blueprint);
     }
 
-    public void PurchaseTower1()
+    public void SelectTower1()
     {
-        Debug.Log("tower 1 purchased");
-        buildManager.SetTowerToBuild(buildManager.Tower1Prefab);
+        Debug.Log("tower 1 selected");
+        buildManager.SelectTowerToBuild(tower1Blueprint);
 
     }
 
-    public void PurchaseTower2()
+    public void SelectTower2()
     {
-        Debug.Log("tower 2 purchased");
-        buildManager.SetTowerToBuild(buildManager.Tower2Prefab);
+        Debug.Log("tower 2 selected");
+        buildManager.SelectTowerToBuild(tower2Blueprint);
     }
 
-    public void PurchaseTower3()
+    public void SelectTower3()
     {
-        Debug.Log("tower 3 purchased");
-        buildManager.SetTowerToBuild(buildManager.Tower3Prefab);
+        Debug.Log("tower 3 selected");
+        buildManager.SelectTowerToBuild(tower3Blueprint);
     }
 
-    public void PurchaseTower4()
+    public void SelectTower4()
     {
-        Debug.Log("tower 4 purchased");
-        buildManager.SetTowerToBuild(buildManager.Tower4Prefab);
+        Debug.Log("tower 4 selected");
+        buildManager.SelectTowerToBuild(tower4Blueprint);
     }
 }
