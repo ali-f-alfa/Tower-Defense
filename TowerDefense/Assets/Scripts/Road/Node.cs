@@ -8,11 +8,14 @@ public class Node : MonoBehaviour
     //public BuildManager buildManager;
 
     public GameObject Tower;
+    public TowerBluePrint TowerBP;
     private Renderer rend;
     private Color startColor;
 
     BuildManager buildManager;
-     
+
+    public int level = 1;
+
     void Start()
     {
         rend = this.GetComponent<Renderer>();
@@ -33,6 +36,11 @@ public class Node : MonoBehaviour
 
 
         buildManager.BuildOnNode(this);
+    }
+
+    public void UpgradeTower()
+    {
+        buildManager.UpgardeOnNode(level + 1, this);
     }
 
     void OnMouseEnter()

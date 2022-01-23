@@ -45,10 +45,32 @@ public class BuildManager : MonoBehaviour
     public void BuildOnNode(Node node)
     {
         PlayerStats.Coins -= TowerToBuild.cost;
-        Debug.Log("Tower build! coins left: " +  PlayerStats.Coins);
+        Debug.Log("Tower build!");
 
         GameObject Tower = (GameObject)Instantiate(TowerToBuild.prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
         node.Tower = Tower;
+        node.TowerBP = TowerToBuild;
+        TowerToBuild = null;
+    }
+
+    public void UpgardeOnNode(int level, Node node)
+    {
+        Destroy(node.Tower);
+        if (level == 2)
+        {
+            if (PlayerStats.Coins < node.TowerBP.upgrade2Cost)
+            {
+                Debug.LogError("Not enough Coins!");
+                return;
+            }
+            PlayerStats.Coins -= node.TowerBP.upgrade2Cost;
+
+            GameObject Tower = (GameObject)Instantiate(node.TowerBP.upgrade2Prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
+            node.Tower = Tower;
+            node.level++;
+            Debug.Log("Tower Upgraded to level 2!");
+
+        }
         TowerToBuild = null;
     }
 
