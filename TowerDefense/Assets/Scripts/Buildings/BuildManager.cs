@@ -11,7 +11,8 @@ public class BuildManager : MonoBehaviour
     public GameObject Tower3Prefab;
     public GameObject Tower4Prefab;
 
-    private TowerBluePrint TowerToBuild;
+    public TowerBluePrint TowerToBuild;
+    private Node selectedNode;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class BuildManager : MonoBehaviour
         }
 
         TowerToBuild = towerBlueprint;
+        selectedNode = null;
     }
 
     public void BuildOnNode(Node node)
@@ -46,6 +48,12 @@ public class BuildManager : MonoBehaviour
 
         GameObject Tower = (GameObject)Instantiate(TowerToBuild.prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
         node.Tower = Tower;
+        TowerToBuild = null;
+    }
+
+    public void SelectNode(Node node)
+    {
+        selectedNode = node;
         TowerToBuild = null;
     }
 }

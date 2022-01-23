@@ -22,14 +22,14 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!buildManager.CanBuild)
-            return;
-
         if (Tower != null)
         {
-            Debug.Log("Can not build there!");
+            buildManager.SelectNode(this);
             return;
         }
+
+        if (!buildManager.CanBuild)
+            return;
 
         buildManager.BuildOnNode(this);
     }

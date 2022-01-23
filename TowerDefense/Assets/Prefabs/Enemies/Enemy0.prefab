@@ -1529,6 +1529,7 @@ MonoBehaviour:
   StartHealth: 100
   Castle: {fileID: 0}
   damage: 50
+  bonus: 5
 --- !u!1 &5462656467576605778
 GameObject:
   m_ObjectHideFlags: 0
