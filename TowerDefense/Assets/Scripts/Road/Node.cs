@@ -12,7 +12,7 @@ public class Node : MonoBehaviour
     private Color startColor;
 
     BuildManager buildManager;
-
+     
     void Start()
     {
         rend = this.GetComponent<Renderer>();
@@ -22,14 +22,15 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
+        
         if (Tower != null)
         {
             buildManager.SelectNode(this);
             return;
         }
-
         if (!buildManager.CanBuild)
             return;
+
 
         buildManager.BuildOnNode(this);
     }

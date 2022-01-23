@@ -11,8 +11,9 @@ public class BuildManager : MonoBehaviour
     public GameObject Tower3Prefab;
     public GameObject Tower4Prefab;
 
-    public TowerBluePrint TowerToBuild;
     private Node selectedNode;
+    private TowerBluePrint TowerToBuild;
+    public NodeUI nodeUI;
 
     void Awake()
     {
@@ -38,7 +39,7 @@ public class BuildManager : MonoBehaviour
         }
 
         TowerToBuild = towerBlueprint;
-        selectedNode = null;
+        DeselectNode();
     }
 
     public void BuildOnNode(Node node)
@@ -53,7 +54,20 @@ public class BuildManager : MonoBehaviour
 
     public void SelectNode(Node node)
     {
+        if(selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
         selectedNode = node;
         TowerToBuild = null;
+
+        nodeUI.SetTraget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
     }
 }
