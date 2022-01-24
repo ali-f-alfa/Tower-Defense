@@ -20,6 +20,7 @@ public class SoldierController : MonoBehaviour
     public GameObject Castle;
 
     public float damage;
+    public float bonus;
 
     void Start()
     {
@@ -70,11 +71,14 @@ public class SoldierController : MonoBehaviour
 
     public void TakeDamage (float amount)
     {
-        Health -= amount;
-        GreenHealhBar.fillAmount = Health / StartHealth;
-        if(Health <= 0)
+        if (state != SoldierStates.DIE)
         {
-            Die();
+            Health -= amount;
+            GreenHealhBar.fillAmount = Health / StartHealth;
+            if (Health <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -82,6 +86,7 @@ public class SoldierController : MonoBehaviour
     {
         state = SoldierStates.DIE;
         anim.SetInteger("EnemyMode", 2);
+        PlayerStats.Coins += bonus;
         Destroy(gameObject, 4f);
     }
     

@@ -8,10 +8,13 @@ public class Node : MonoBehaviour
     //public BuildManager buildManager;
 
     public GameObject Tower;
+    public TowerBluePrint TowerBP;
     private Renderer rend;
     private Color startColor;
 
     BuildManager buildManager;
+
+    public int level = 1;
 
     void Start()
     {
@@ -22,16 +25,27 @@ public class Node : MonoBehaviour
 
     void OnMouseDown()
     {
+        
+        if (Tower != null)
+        {
+            buildManager.SelectNode(this);
+            return;
+        }
         if (!buildManager.CanBuild)
             return;
 
-        if (Tower != null)
-        {
-            Debug.Log("Can not build there!");
-            return;
-        }
 
         buildManager.BuildOnNode(this);
+    }
+
+    public void UpgradeTower()
+    {
+        buildManager.UpgardeOnNode(level + 1, this);
+    }
+
+    public void SellTower()
+    {
+        buildManager.SellOnNode(level, this);
     }
 
     void OnMouseEnter()

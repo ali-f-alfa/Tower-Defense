@@ -11,7 +11,9 @@ public class BuildManager : MonoBehaviour
     public GameObject Tower3Prefab;
     public GameObject Tower4Prefab;
 
+    private Node selectedNode;
     private TowerBluePrint TowerToBuild;
+    public NodeUI nodeUI;
 
     void Awake()
     {
@@ -37,15 +39,106 @@ public class BuildManager : MonoBehaviour
         }
 
         TowerToBuild = towerBlueprint;
+        DeselectNode();
     }
 
     public void BuildOnNode(Node node)
     {
         PlayerStats.Coins -= TowerToBuild.cost;
-        Debug.Log("Tower build! coins left: " +  PlayerStats.Coins);
+        Debug.Log("Tower build!");
 
         GameObject Tower = (GameObject)Instantiate(TowerToBuild.prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
         node.Tower = Tower;
+        node.TowerBP = TowerToBuild;
         TowerToBuild = null;
+    }
+
+    public void UpgardeOnNode(int level, Node node)
+    {
+        if (level > 4)
+        {
+            TowerToBuild = null;
+            return;
+        }
+
+        if (level == 2)
+        {
+            if (PlayerStats.Coins < node.TowerBP.upgrade2Cost)
+            {
+                Debug.LogError("Not enough Coins!");
+                return;
+            }
+            PlayerStats.Coins -= node.TowerBP.upgrade2Cost;
+
+            Destroy(node.Tower);
+            GameObject Tower = (GameObject)Instantiate(node.TowerBP.upgrade2Prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
+            node.Tower = Tower;
+            node.level++;
+            Debug.Log("Tower Upgraded to level 2!");
+
+        }
+        else if (level == 3)
+        {
+            if (PlayerStats.Coins < node.TowerBP.upgrade3Cost)
+            {
+                Debug.LogError("Not enough Coins!");
+                return;
+            }
+            PlayerStats.Coins -= node.TowerBP.upgrade3Cost;
+
+            Destroy(node.Tower);
+            GameObject Tower = (GameObject)Instantiate(node.TowerBP.upgrade3Prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
+            node.Tower = Tower;
+            node.level++;
+            Debug.Log("Tower Upgraded to level 3!");
+
+        }
+        else if (level == 4)
+        {
+            if (PlayerStats.Coins < node.TowerBP.upgrade4Cost)
+            {
+                Debug.LogError("Not enough Coins!");
+                return;
+            }
+            PlayerStats.Coins -= node.TowerBP.upgrade4Cost;
+
+            Destroy(node.Tower);
+            GameObject Tower = (GameObject)Instantiate(node.TowerBP.upgrade4Prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
+            node.Tower = Tower;
+            node.level++;
+            Debug.Log("Tower Upgraded to level 4!");
+
+        }
+        TowerToBuild = null;
+    }
+
+    public void SellOnNode(int level, Node node)
+    {
+        PlayerStats.Coins += node.TowerBP.GetSellAmount(level);
+
+        Destroy(node.Tower);
+        node.Tower = null;
+        node.level = 1;
+
+        TowerToBuild = null;
+    }
+
+    public void SelectNode(Node node)
+    {
+        if(selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+        selectedNode = node;
+        TowerToBuild = null;
+
+        nodeUI.SetTraget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
     }
 }
