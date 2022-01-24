@@ -43,6 +43,11 @@ public class Node : MonoBehaviour
         buildManager.UpgardeOnNode(level + 1, this);
     }
 
+    public void SellTower()
+    {
+        buildManager.SellOnNode(level, this);
+    }
+
     void OnMouseEnter()
     {
         if (!buildManager.CanBuild)

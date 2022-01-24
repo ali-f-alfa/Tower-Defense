@@ -1576,37 +1576,67 @@ MonoBehaviour:
     prefab: {fileID: 4665388485141568094, guid: 83f0a4637cdea6c488c4094d24dbd7e4,
       type: 3}
     cost: 100
-    upgrade2Prefab: {fileID: 2802272460387158830, guid: e05f0d60e3ab9454badb8c7ea6329f55,
+    upgrade2Prefab: {fileID: 4665388485141568094, guid: 7692031ea6c8ace4ea533fb1994d3580,
       type: 3}
-    upgrade2Cost: 50
+    upgrade2Cost: 40
+    upgrade3Prefab: {fileID: 4665388485141568094, guid: 615739611d7838d42b62625352663bc2,
+      type: 3}
+    upgrade3Cost: 70
+    upgrade4Prefab: {fileID: 4665388485141568094, guid: 3a21c229ec346e24a82bcddd8f08281e,
+      type: 3}
+    upgrade4Cost: 100
   tower1Blueprint:
     prefab: {fileID: 4617815070090263120, guid: 8e4866490d4766c4e91fd1d72b184443,
       type: 3}
     cost: 150
-    upgrade2Prefab: {fileID: 2802272460387158830, guid: e05f0d60e3ab9454badb8c7ea6329f55,
+    upgrade2Prefab: {fileID: 4617815070090263120, guid: 77fae2f507bdab444b3e4fadd3847f39,
       type: 3}
     upgrade2Cost: 50
+    upgrade3Prefab: {fileID: 4617815070090263120, guid: 9741e9309015483499b97ba15883c13d,
+      type: 3}
+    upgrade3Cost: 100
+    upgrade4Prefab: {fileID: 4617815070090263120, guid: ab945ec24ee81544188efdb8dcef5d3c,
+      type: 3}
+    upgrade4Cost: 150
   tower2Blueprint:
     prefab: {fileID: 5230216776245302872, guid: 8c7b20e4feaf7734188210cdc2ffe140,
       type: 3}
     cost: 200
-    upgrade2Prefab: {fileID: 2802272460387158830, guid: e05f0d60e3ab9454badb8c7ea6329f55,
+    upgrade2Prefab: {fileID: 5230216776245302872, guid: 02dacc5a1da32d14785c08ca2a32191d,
       type: 3}
-    upgrade2Cost: 50
+    upgrade2Cost: 75
+    upgrade3Prefab: {fileID: 5230216776245302872, guid: c301051710e07004788e2d846c905955,
+      type: 3}
+    upgrade3Cost: 125
+    upgrade4Prefab: {fileID: 5230216776245302872, guid: 83ed9ad10a2cfd14bb922f5e73a7b74d,
+      type: 3}
+    upgrade4Cost: 200
   tower3Blueprint:
     prefab: {fileID: 8515017890248965703, guid: b3a762dee82d28a4e866833c71cfa1a4,
       type: 3}
     cost: 250
-    upgrade2Prefab: {fileID: 2802272460387158830, guid: e05f0d60e3ab9454badb8c7ea6329f55,
+    upgrade2Prefab: {fileID: 8515017890248965703, guid: 8682da89c41d73745988f2ffdaf6dee7,
       type: 3}
-    upgrade2Cost: 50
+    upgrade2Cost: 100
+    upgrade3Prefab: {fileID: 8515017890248965703, guid: 2dc0b6a04a0579345a4e01d208d926f2,
+      type: 3}
+    upgrade3Cost: 175
+    upgrade4Prefab: {fileID: 8515017890248965703, guid: d4b1dbeb9aa7268408138bfa0c3c2c33,
+      type: 3}
+    upgrade4Cost: 250
   tower4Blueprint:
     prefab: {fileID: 2802272460387158830, guid: e05f0d60e3ab9454badb8c7ea6329f55,
       type: 3}
     cost: 300
-    upgrade2Prefab: {fileID: 8515017890248965703, guid: b3a762dee82d28a4e866833c71cfa1a4,
+    upgrade2Prefab: {fileID: 2802272460387158830, guid: 3ed2f47a1924e4841976c87265d9f861,
       type: 3}
-    upgrade2Cost: 50
+    upgrade2Cost: 125
+    upgrade3Prefab: {fileID: 2802272460387158830, guid: 08cc70d55e76ca04eacf0a00b615c443,
+      type: 3}
+    upgrade3Cost: 200
+    upgrade4Prefab: {fileID: 2802272460387158830, guid: 42d4d8d090fa0fd44a9fc38ab26d2f62,
+      type: 3}
+    upgrade4Cost: 300
 --- !u!4 &289042903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 846202124450758072, guid: b109db06061deb744b7406ed73bcea25,
@@ -4197,6 +4227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 830865812}
   upgradeCost: {fileID: 1711286639}
+  sellAmount: {fileID: 1435933664}
 --- !u!1001 &852237166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5716,7 +5747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84f4e80ebd539d409176b7a680fdc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 400
+  startMoney: 1000
 --- !u!1 &1435933662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,7 +5760,7 @@ GameObject:
   - component: {fileID: 1435933665}
   - component: {fileID: 1435933664}
   m_Layer: 0
-  m_Name: Cost
+  m_Name: Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8911,7 +8942,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2045492998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 835095405}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2045492998
 MonoBehaviour:
   m_ObjectHideFlags: 0
