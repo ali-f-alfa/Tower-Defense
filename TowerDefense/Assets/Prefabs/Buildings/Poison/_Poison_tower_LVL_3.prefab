@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 12
-  fireRate: 2
-  ShellPrefab: {fileID: 130951686748438586, guid: 989bd494712097d49ac1a674c309bc53,
+  fireRate: 2.4
+  ShellPrefab: {fileID: 130951686748438586, guid: 923d3dc668d581047b3daacfb45e9929,
     type: 3}
   ShootPoint: {fileID: 276608738160132424}
 --- !u!82 &7766392242799961981

@@ -575,7 +575,7 @@ MonoBehaviour:
   moveFactor: 1.5
   HealthBar: {fileID: 496246982228160004}
   GreenHealhBar: {fileID: 6984102046892940222}
-  StartHealth: 150
+  StartHealth: 300
   Castle: {fileID: 0}
   damage: 100
   bonus: 10

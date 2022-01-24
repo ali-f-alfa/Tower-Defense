@@ -106,7 +106,7 @@ public class BuildManager : MonoBehaviour
             GameObject Tower = (GameObject)Instantiate(node.TowerBP.upgrade4Prefab, node.transform.position + new Vector3(0f, 0.25f, 0f), node.transform.rotation);
             node.Tower = Tower;
             node.level++;
-            Debug.Log("Tower Upgraded to level 3!");
+            Debug.Log("Tower Upgraded to level 4!");
 
         }
         TowerToBuild = null;

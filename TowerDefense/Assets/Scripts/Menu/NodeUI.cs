@@ -27,7 +27,10 @@ public class NodeUI : MonoBehaviour
         {
             upgradeCost.text = "$" + target.TowerBP.upgrade4Cost.ToString();
         }
-
+        else if (target.level == 4)
+        {
+            upgradeCost.text = "MAX";
+        }
         sellAmount.text = "$" + target.TowerBP.GetSellAmount(target.level).ToString();
         ui.SetActive(true);
     }

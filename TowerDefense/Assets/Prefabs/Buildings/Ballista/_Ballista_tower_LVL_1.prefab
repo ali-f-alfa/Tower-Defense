@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b301f56e16a7b404e9242cfd68b98ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 7.5
+  range: 7
   fireRate: 0.4
   ShellPrefab: {fileID: 7955282995572432989, guid: 49095c27565c2554bad856745389a601,
     type: 3}
