@@ -15,11 +15,6 @@ public class CastleController : MonoBehaviour
         Health = StartHealth;
     }
 
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(float amount)
     {
         Health -= amount;

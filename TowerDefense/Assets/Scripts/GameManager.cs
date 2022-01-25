@@ -5,14 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool IsGameOver;
+    public static bool IsGameComplete;
+
     public GameObject gameOverUI;
     public GameObject pausedMenuUI;
+    public GameObject CompleteLevelUI;
 
     void Start()
     {
+        IsGameComplete = false;
         IsGameOver = false;
         Time.timeScale = 1f;
-
     }
 
     void Update()
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour
         if (IsGameOver)
         {
             EndGame();
+            return;
+        }
+        if (IsGameComplete)
+        {
+            WinGame();
             return;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -32,6 +40,13 @@ public class GameManager : MonoBehaviour
     {
         IsGameOver = true;
         gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void WinGame()
+    {
+        IsGameComplete = true;
+        CompleteLevelUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
