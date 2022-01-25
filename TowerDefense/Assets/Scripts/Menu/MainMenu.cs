@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        LevelToLoad = "Level1";
         Time.timeScale = 1f;
     }
 

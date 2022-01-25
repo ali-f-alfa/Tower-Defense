@@ -14,6 +14,6 @@ public class CoinsUI : MonoBehaviour
 
     void UpdateCoins()
     {
-        CoinsText.text = PlayerStats.Coins.ToString();
+        CoinsText.text = "$" + PlayerStats.Coins.ToString();
     }
 }
