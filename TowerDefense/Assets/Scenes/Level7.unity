@@ -6354,19 +6354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4759f3c15e4ecf54d8530f61905659c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAliveEnemies: []
   enemy0: {fileID: 5462656467566705979, guid: 89efaee4632268c47b2dbaf4c6c8bf45, type: 3}
   enemy1: {fileID: 3299464323039980401, guid: 2685b54f0c38a7b44ada2763ca84a358, type: 3}
   enemy2: {fileID: 4833175209235196773, guid: cf82ae958a563cc4a8a4829f3d42909c, type: 3}
   enemy3: {fileID: 5368847630594569109, guid: b0152419df4506e4b8e258a9fe982c22, type: 3}
-  maxEnemyGapTimer: 3
-  maxLevelTimer: 120
-  enemyGapTimer: 0
-  levelTimer: 0
-  enemy0RandomRange: 0
-  enemy1RandomRange: 0
-  enemy2RandomRange: 0
-  enemy3RandomRange: 0
+  Waves: 
+  maxWaveTimer: 0
+  WaveTimer: 0
 --- !u!4 &1431704849
 Transform:
   m_ObjectHideFlags: 0
@@ -6408,7 +6402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84f4e80ebd539d409176b7a680fdc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 1000
+  startMoney: 1400
 --- !u!1 &1435933662
 GameObject:
   m_ObjectHideFlags: 0
