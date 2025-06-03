@@ -11,7 +11,7 @@ public class NodeUI : MonoBehaviour
     public Text upgradeCost;
     public Text sellAmount;
 
-    public void SetTraget(Node _target)
+    public void SetTarget(Node _target)
     {
         target = _target;
         transform.position = target.transform.position;

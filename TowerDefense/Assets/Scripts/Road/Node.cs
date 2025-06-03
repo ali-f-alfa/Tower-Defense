@@ -40,7 +40,7 @@ public class Node : MonoBehaviour
 
     public void UpgradeTower()
     {
-        buildManager.UpgardeOnNode(level + 1, this);
+        buildManager.UpgradeOnNode(level + 1, this);
     }
 
     public void SellTower()

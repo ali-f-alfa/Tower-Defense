@@ -14,7 +14,7 @@ public class BuildManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("More than one buildManagar in scene!");
+            Debug.LogError("More than one BuildManager in scene!");
             return;
         }
         Instance = this;
@@ -48,7 +48,7 @@ public class BuildManager : MonoBehaviour
         TowerToBuild = null;
     }
 
-    public void UpgardeOnNode(int level, Node node)
+    public void UpgradeOnNode(int level, Node node)
     {
         if (level > 4)
         {
@@ -113,6 +113,7 @@ public class BuildManager : MonoBehaviour
 
         Destroy(node.Tower);
         node.Tower = null;
+        node.TowerBP = null;
         node.level = 1;
 
         TowerToBuild = null;
@@ -128,7 +129,7 @@ public class BuildManager : MonoBehaviour
         selectedNode = node;
         TowerToBuild = null;
 
-        nodeUI.SetTraget(node);
+        nodeUI.SetTarget(node);
     }
 
     public void DeselectNode()
