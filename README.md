@@ -7,3 +7,25 @@ Computer Game Design project with Unity 3D
 ![4](https://user-images.githubusercontent.com/45769531/207818454-dd84cdb8-82a0-4e44-a27a-020a45e6c2de.png)
 ![5](https://user-images.githubusercontent.com/45769531/207818518-929c8588-5013-4b9c-bd0e-7832c2527430.png)
 ![6](https://user-images.githubusercontent.com/45769531/207818579-e15fa2b0-eab0-4da8-84b2-b416d5b54c52.png)
+
+## Docker
+
+This repository includes a `Dockerfile` based on the
+[UnityCI editor images](https://github.com/game-ci/docker) for Unity `2019.4.9f1`.
+The container allows you to work with the project without installing Unity
+locally.
+
+Build the image:
+
+```bash
+docker build -t tower-defense .
+```
+
+Launch an interactive shell inside the container:
+
+```bash
+docker run --rm -it tower-defense
+```
+
+Make sure to provide your Unity license information when running the editor
+inside the container.
